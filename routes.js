@@ -57,9 +57,15 @@ function addTracksToResponse(searchTerm, r) {
         };
         if (config.player) {
           track['a'] = {href: playUrl};
-          track['audio'] = {'class': 'hide'};
+          track['.track-player'] = {
+            _html: '<p><span class="track-tap">Tap to play</span></p>'
+          };
         } else {
-          track['source'] = {src: playUrl};
+          track['.track-player'] = {
+            _html: '<audio controls preload="preload">' +
+                      '<source src="' + playUrl + '">' +
+                   '</audio>'
+          };
         }
         return track;
       })

@@ -7,6 +7,7 @@ var registerHtml = fs.readFileSync('register.html');
 var searchTrack  = require('./search/search');
 var config       = require('./config');
 var childProcess = require('child_process');
+var hyperquest   = require('hyperquest');
 var player       = null;
 
 module.exports = {
@@ -123,9 +124,14 @@ function authenticate(q, r, next) {
 }
 
 function play(q, r, next) {
-  if (player) player.kill();
-  player = childProcess.fork('./player');
-  player.send(q.params[0]);
+  var remotePlayer = config.remote_player;
+  if (remotePlayer) {
+    hyperquest(remotePlayer + '/' + q.params[0]);
+  } else {
+    if (player) player.kill();
+    player = childProcess.fork('./player');
+    player.send(q.params[0]);
+  }
   r.writeHead(302, {'Location': '/'});
   r.end();
 }

@@ -7,6 +7,7 @@ var config = require('./config');
 http.createServer(stack(
   routes.authenticate,
   route.get(/^\/play\/(.*)/, routes.play),
+  route.get(/^\/stream\/(.*)/, routes.stream),
   route.get('/favicon.ico', routes.emptyFavicon),
   route.get('/app.css', routes.appCss),
   route.post('/register', routes.register),

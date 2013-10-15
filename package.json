@@ -10,11 +10,6 @@
   "scripts": {
     "start": "npm install && node ./node_modules/supervisor/lib/cli-wrapper.js -w . -e \"js|css|html|json\" index.js"
   },
-  "author": {
-    "name": "James Kyburz",
-    "email": "james.kyburz@gmail.com",
-    "url": "http://github.com/jameskyburz"
-  },
   "author": "James Kyburz",
   "license": "MIT",
   "dependencies": {
@@ -27,6 +22,8 @@
     "hyperquest": "~0.1.8",
     "JSONStream": "~0.7.1",
     "youtube-audio-stream": "0.0.1",
-    "spotify-web": "~0.1.3"
+    "spotify-web": "~0.1.3",
+    "speaker": "0.0.10",
+    "lame": "~1.0.3"
   }
 }

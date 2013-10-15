@@ -1,11 +1,13 @@
-var fs            = require('fs');
-var hyperglue     = require('hyperglue');
-var cookieCutter  = require('cookie-cutter');
-var indexHtml     = fs.readFileSync('index.html');
-var tracksHtml    = fs.readFileSync('tracks.html');
-var registerHtml  = fs.readFileSync('register.html');
-var searchTrack   = require('./search/search');
-var config        = require('./config');
+var fs           = require('fs');
+var hyperglue    = require('hyperglue');
+var cookieCutter = require('cookie-cutter');
+var indexHtml    = fs.readFileSync('index.html');
+var tracksHtml   = fs.readFileSync('tracks.html');
+var registerHtml = fs.readFileSync('register.html');
+var searchTrack  = require('./search/search');
+var config       = require('./config');
+var childProcess = require('child_process');
+var player       = null;
 
 module.exports = {
   emptyFavicon: emptyFavicon,
@@ -14,6 +16,7 @@ module.exports = {
   register: register,
   search: search,
   authenticate: authenticate,
+  stream: stream,
   play: play
 };
 
@@ -44,12 +47,20 @@ function addTracksToResponse(searchTerm, r) {
   searchTrack(searchTerm, function(tracks) {
     var trackResponse = hyperglue(tracksHtml, {
       '.track': tracks.map(function(x) {
-        return {
-          'source': {src: '/play/' + new Buffer(JSON.stringify(x)).toString('base64')},
+        var playUrl = (config.player ? '/play/' : '/stream/') +
+          new Buffer(JSON.stringify(x)).toString('base64');
+        var track = {
           '.track-title': x.title,
           '.track-duration': x.duration,
           '.track-source': x.source
         };
+        if (config.player) {
+          track['a'] = {href: playUrl};
+          track['audio'] = {'class': 'hide'};
+        } else {
+          track['source'] = {src: playUrl};
+        }
+        return track;
       })
     }).innerHTML;
     r.end(
@@ -112,6 +123,14 @@ function authenticate(q, r, next) {
 }
 
 function play(q, r, next) {
+  if (player) player.kill();
+  player = childProcess.fork('./player');
+  player.send(q.params[0]);
+  r.writeHead(302, {'Location': '/'});
+  r.end();
+}
+
+function stream(q, r, next) {
   var track = JSON.parse(new Buffer(q.params[0], 'base64').toString());
   require('./stream/' + track.source)(track.uri).pipe(r);
 }

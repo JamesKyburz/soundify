@@ -1,4 +1,5 @@
 {
+  "port": 1338,
   "sources": ["spotify", "youtube", "soundcloud"],
   "soundcloud_client_id": "?",
   "spotify_user": "?",

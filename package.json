@@ -8,7 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "npm install && node ./node_modules/supervisor/lib/cli-wrapper.js -w . index.js"
+    "start": "npm install && node ./node_modules/supervisor/lib/cli-wrapper.js -w . -e \"js|css|html|json\" index.js"
   },
   "author": {
     "name": "James Kyburz",

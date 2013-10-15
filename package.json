@@ -14,6 +14,11 @@
     "name" : "James Kyburz",
     "email" : "james.kyburz@gmail.com"
   },
+  "keywords" : [
+    "music",
+    "player",
+    "streaming"
+  ],
   "license": "MIT",
   "dependencies": {
     "hyperglue": "~1.3.0",

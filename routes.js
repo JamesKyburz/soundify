@@ -131,7 +131,7 @@ function authenticate(q, r, next) {
 
 function play(q, r, next) {
   var remotePlayer = config.remote_player;
-  if (remotePlayer) {
+  if (config.player && remotePlayer) {
     hyperquest(remotePlayer + '/' + q.params[0]);
   } else {
     if (player) player.kill();

@@ -1,0 +1,8 @@
+{
+  "sources": ["spotify", "youtube", "soundcloud"],
+  "soundcloud_client_id": "?",
+  "spotify_user": "?",
+  "spotify_password": "?",
+  "service_credentials": "?",
+  "player": false
+}

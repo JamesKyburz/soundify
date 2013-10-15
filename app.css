@@ -1,0 +1,92 @@
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.track-duration {
+  color: #17B22A;
+}
+
+.track-title {
+  color: black;
+  text-decoration: none;
+}
+
+.track-source {
+  color: black;
+  text-decoration: none;
+}
+
+.tracks {
+  list-style: none;
+  margin-left:0;
+  margin-top: 32px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.track a {
+  text-decoration: none;
+}
+
+.track {
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: white;
+  font-size: 18px;
+  display: inline-block;
+  padding: 4px 10px 4px;
+  color: #333333;
+  text-align: center;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  vertical-align: middle;
+  background-color: #f5f5f5;
+  background-image: -moz-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -ms-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#e6e6e6));
+  background-image: -webkit-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+  background-image: linear-gradient(top, #ffffff, #e6e6e6);
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e6e6e6', GradientType=0);
+  border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid #ccc;
+  border-bottom-color: #bbb;
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+
+.search-query, .register-name {
+  position: fixed;
+  top: 10px;
+  left: 8px;
+  width: 99%;
+  width: calc(100% - 16px);
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  z-index: 100;
+  outline: none;
+  padding: 7px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}
+
+audio {
+  width: 50px;
+  margin-bottom: 20px;
+}
+
+audio::-webkit-media-controls-play-button {
+  margin-left: 4px;
+  width: 30px;
+}
+
+audio::-webkit-media-controls-panel {
+  width: 40px;
+  border-radius: 18px;
+}

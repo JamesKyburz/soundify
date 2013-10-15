@@ -10,7 +10,10 @@
   "scripts": {
     "start": "npm install && node ./node_modules/supervisor/lib/cli-wrapper.js -w . -e \"js|css|html|json\" index.js"
   },
-  "author": "James Kyburz",
+  "author": {
+    "name" : "James Kyburz",
+    "email" : "james.kyburz@gmail.com"
+  },
   "license": "MIT",
   "dependencies": {
     "hyperglue": "~1.3.0",

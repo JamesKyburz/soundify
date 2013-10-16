@@ -1,5 +1,6 @@
 {
   "port": 1338,
+  "max_search_results": 4,
   "sources": ["spotify", "youtube", "soundcloud"],
   "soundcloud_client_id": "?",
   "spotify_user": "?",

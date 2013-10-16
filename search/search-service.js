@@ -1,6 +1,7 @@
 var hyperquest = require('hyperquest');
 var through    = require('through');
 var JSONStream = require('JSONStream');
+var maxResults = require('../config').max_search_results;
 
 module.exports = search;
 
@@ -9,7 +10,7 @@ function search(options) {
   hyperquest(options.uri)
     .pipe(JSONStream.parse(options.parsingKeys))
     .pipe(through(function toTrack(track) {
-      if (tracks.length < 4) {
+      if (tracks.length < maxResults) {
         track = options.parseTrack(track);
         if (track) tracks.push(track);
       }
@@ -19,6 +20,8 @@ function search(options) {
     options.callback(tracks);
   }
 }
+
+search.maxResults = maxResults;
 
 search.msToTime = function (ms) {
   var seconds      = n(ms / 1000 % 60);

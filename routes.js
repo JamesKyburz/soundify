@@ -125,7 +125,7 @@ function authenticate(q, r, next) {
     credentials = new Buffer(credentials.slice(6), 'base64').toString();
     if (credentials === config.service_credentials) return next();
   }
-  r.writeHead(401, {'WWW-Authenticate': 'Basic realm=""'});
+  r.writeHead(401, {'WWW-Authenticate': 'Basic'});
   r.end('authentication required');
 }
 

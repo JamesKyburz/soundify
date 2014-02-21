@@ -11,28 +11,28 @@
     "start": "npm install && node ./node_modules/supervisor/lib/cli-wrapper.js -w . -e \"js|css|html|json\" index.js"
   },
   "author": {
-    "name" : "James Kyburz",
-    "email" : "james.kyburz@gmail.com"
+    "name": "James Kyburz",
+    "email": "james.kyburz@gmail.com"
   },
-  "keywords" : [
+  "keywords": [
     "music",
     "player",
     "streaming"
   ],
   "license": "MIT",
   "dependencies": {
-    "hyperglue": "~1.3.0",
+    "hyperglue": "^1.3.0",
     "hyperdirect": "0.0.0",
-    "supervisor": "~0.5.6",
-    "stack": "~0.1.0",
-    "tiny-route": "~2.1.0",
-    "through": "~2.3.4",
+    "supervisor": "^0.5.6",
+    "stack": "^0.1.0",
+    "tiny-route": "^2.1.0",
+    "through": "^2.3.4",
     "hyperquest": "~0.1.8",
     "JSONStream": "~0.7.1",
     "youtube-audio-stream": "0.0.2",
     "spotify-web": "~0.1.3",
     "speaker": "0.0.10",
-    "lame": "~1.0.3",
+    "lame": "^1.0.3",
     "cookie-cutter": "git+ssh://git@github.com:JamesKyburz/cookie-cutter.git"
   }
 }

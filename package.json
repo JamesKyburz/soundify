@@ -21,19 +21,18 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "hyperglue": "^1.3.0",
+    "JSONStream": "^0.8.4",
+    "cookie-cutter": "^0.1.1",
     "hyperdirect": "0.0.0",
-    "supervisor": "^0.5.6",
+    "hyperglue": "^1.3.0",
+    "hyperquest": "^0.3.0",
+    "lame": "^1.1.0",
+    "speaker": "^0.2.0",
+    "spotify-web": "^1.2.0",
     "stack": "^0.1.0",
-    "tiny-route": "^2.1.0",
+    "supervisor": "^0.6.0",
     "through": "^2.3.4",
-    "hyperquest": "^0.1.8",
-    "JSONStream": "^0.7.1",
-    "youtube-audio-stream": "0.0.2",
-    "cookie-cutter": "git+ssh://git@github.com:JamesKyburz/cookie-cutter.git",
-    "speaker": "0.0.10",
-    "lame": "^1.0.3",
-    "cookie-cutter": "git+ssh://git@github.com:JamesKyburz/cookie-cutter.git",
-    "spotify-web": "git+ssh://git@github.com:TooTallNate/node-spotify-web.git#master"
+    "tiny-route": "^2.1.1",
+    "youtube-audio-stream": "0.0.2"
   }
 }

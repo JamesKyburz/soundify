@@ -1,9 +1,9 @@
 var fs           = require('fs');
 var hyperglue    = require('hyperglue');
 var cookieCutter = require('cookie-cutter');
-var indexHtml    = fs.readFileSync('index.html');
-var tracksHtml   = fs.readFileSync('tracks.html');
-var registerHtml = fs.readFileSync('register.html');
+var indexHtml    = fs.readFileSync(__dirname + '/index.html');
+var tracksHtml   = fs.readFileSync(__dirname + '/tracks.html');
+var registerHtml = fs.readFileSync(__dirname + '/register.html');
 var searchTrack  = require('./search/search');
 var config       = require('./config');
 var childProcess = require('child_process');

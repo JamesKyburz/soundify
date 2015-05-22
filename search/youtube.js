@@ -1,17 +1,18 @@
+var config = require('../config');
 var search = require('./search-service');
+
 module.exports = function(term, cb) {
   var options = {
     callback: cb,
-    parsingKeys: ['feed', 'entry', true],
-    uri: 'https://gdata.youtube.com/feeds/api/videos?max-results=' + search.maxResults + '&q=' + term + '&v=2&alt=json',
-    parseTrack: function(track) {
-      var ms = parseInt(track.media$group.yt$duration.seconds * 1000, 10);
+    parsingKeys: ['items', true],
+    uri: 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=' + config.youtube_api_key + '&maxResults=' + search.maxResults + '&q=' + term,
+    parseTrack: function(item) {
       return {
-        uri: track.media$group.media$player.url,
-        title: track.media$group.media$title.$t,
+        uri: 'https://www.youtube.com/watch?v=' + item.id.videoId,
+        title: item.snippet.title,
         source: 'youtube',
-        durationMs: ms,
-        duration: search.msToTime(ms)
+        durationMs: 0,
+        duration: 0
       };
     }
   };

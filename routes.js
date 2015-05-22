@@ -32,6 +32,7 @@ function main(q, r, next) {
   r.writeHead(200, {'Content-Type': 'text/html'});
   if (partyUser = cookie.get('party-user')) {
     var searchTerm = cookie.get('search-track');
+    if (searchTerm) console.log('search %s', searchTerm);
     if (searchTerm) return addTracksToResponse(searchTerm, r);
     fs.createReadStream('index.html').pipe(r);
   } else {
@@ -144,5 +145,6 @@ function play(q, r, next) {
 
 function stream(q, r, next) {
   var track = JSON.parse(new Buffer(q.params[0], 'base64').toString());
+  console.log('playing %s', track.uri);
   require('./stream/' + track.source)(track.uri).pipe(r);
 }

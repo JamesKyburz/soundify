@@ -3,6 +3,7 @@
   "max_search_results": 4,
   "sources": ["spotify", "youtube", "soundcloud"],
   "soundcloud_client_id": "?",
+  "youtube_api_key": "?",
   "spotify_user": "?",
   "spotify_password": "?",
   "service_credentials": "?",

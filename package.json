@@ -33,6 +33,6 @@
     "supervisor": "0.9.1",
     "through": "2.3.8",
     "tiny-route": "2.1.1",
-    "youtube-audio-stream": "0.0.7"
+    "youtube-audio-stream": "0.0.8"
   }
 }

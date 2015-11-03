@@ -1,7 +1,7 @@
 {
   "name": "soundify",
   "description": "stream tracks to devices from multiple sources",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "repository": {
     "type": "git",
     "url": "git://github.com/jameskyburz/soundify.git"

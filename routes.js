@@ -3,7 +3,6 @@ var hyperglue    = require('hyperglue');
 var cookieCutter = require('cookie-cutter');
 var indexHtml    = fs.readFileSync(__dirname + '/index.html');
 var tracksHtml   = fs.readFileSync(__dirname + '/tracks.html');
-var registerHtml = fs.readFileSync(__dirname + '/register.html');
 var searchTrack  = require('./search/search');
 var config       = require('./config');
 var childProcess = require('child_process');
@@ -14,7 +13,6 @@ module.exports = {
   emptyFavicon: emptyFavicon,
   main: main,
   appCss: appCss,
-  register: register,
   search: search,
   authenticate: authenticate,
   stream: stream,
@@ -30,18 +28,10 @@ function main(q, r, next) {
   var cookie = cookieCutter(q.headers.cookie);
   var partyUser;
   r.writeHead(200, {'Content-Type': 'text/html'});
-  if (partyUser = cookie.get('party-user')) {
-    var searchTerm = cookie.get('search-track');
-    if (searchTerm) console.log('search %s', searchTerm);
-    if (searchTerm) return addTracksToResponse(searchTerm, r);
-    fs.createReadStream('index.html').pipe(r);
-  } else {
-    r.end(
-      hyperglue(indexHtml, {
-        'body': {_html: registerHtml}
-      }).innerHTML
-    );
-  }
+  var searchTerm = cookie.get('search-track');
+  if (searchTerm) console.log('search %s', searchTerm);
+  if (searchTerm) return addTracksToResponse(searchTerm, r);
+  fs.createReadStream('index.html').pipe(r);
 }
 
 function addTracksToResponse(searchTerm, r) {

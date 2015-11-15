@@ -10,7 +10,6 @@ http.createServer(stack(
   route.get(/^\/stream\/(.*)/, routes.stream),
   route.get('/favicon.ico', routes.emptyFavicon),
   route.get('/app.css', routes.appCss),
-  route.post('/register', routes.register),
   route.post('/search', routes.search),
   route.get('/', routes.main)
 )).listen(config.port);

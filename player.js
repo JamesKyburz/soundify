@@ -11,6 +11,3 @@ process.on('message', function(uri) {
      .pipe(speaker)
    ;
 });
-
-
-

@@ -8,7 +8,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "npm install && node ./node_modules/supervisor/lib/cli-wrapper.js -w . -e \"js|css|html|json\" index.js"
+    "start": "node index"
   },
   "author": {
     "name": "James Kyburz",
@@ -30,8 +30,7 @@
     "speaker": "0.2.6",
     "spotify-web": "git+ssh://git@github.com/fuzeman/node-spotify-web.git#feature/ping-pong-fix",
     "stack": "0.1.0",
-    "supervisor": "0.9.1",
-    "through": "2.3.8",
+    "through2": "2.0.0",
     "tiny-route": "2.1.1",
     "youtube-audio-stream": "0.0.13"
   }

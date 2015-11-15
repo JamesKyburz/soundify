@@ -1,6 +1,6 @@
 var Spotify = require('spotify-web');
 var config  = require('../config');
-var through = require('through');
+var through = require('through2');
 
 module.exports = function(uri) {
   var stream = through();

@@ -1,8 +1,7 @@
-var http   = require('http');
-var stack  = require('stack');
-var routes = require('./routes');
-var route  = require('tiny-route');
-var config
+var http = require('http')
+var stack = require('stack')
+var routes = require('./routes')
+var route = require('tiny-route')
 
 if (!module.parent) {
   start(require('./config'))
@@ -19,5 +18,5 @@ function start (config) {
     route.get('/app.css', routes.appCss),
     route.post('/search', routes.search),
     route.get('/', routes.main)
-  )).listen(config.port);
+  )).listen(config.port)
 }

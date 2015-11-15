@@ -1,7 +1,7 @@
 {
   "name": "soundify",
   "description": "stream tracks to devices from multiple sources",
-  "version": "0.0.17",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/jameskyburz/soundify.git"
@@ -15,7 +15,14 @@
     "name": "James Kyburz",
     "email": "james.kyburz@gmail.com"
   },
-  "keywords": [ "music", "player", "streaming", "youtube", "soundcloud", "spotify"],
+  "keywords": [
+    "music",
+    "player",
+    "streaming",
+    "youtube",
+    "soundcloud",
+    "spotify"
+  ],
   "dependencies": {
     "JSONStream": "1.0.6",
     "cookie-cutter": "0.1.1",

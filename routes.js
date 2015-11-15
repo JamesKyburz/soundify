@@ -7,6 +7,7 @@ var searchTrack = require('./search/search')
 var config = require('./config')
 var childProcess = require('child_process')
 var hyperquest = require('hyperquest')
+var debug = require('debug')('routes.js')
 var player = null
 
 module.exports = {
@@ -28,7 +29,7 @@ function main (q, r, next) {
   var cookie = cookieCutter(q.headers.cookie)
   r.writeHead(200, {'Content-Type': 'text/html'})
   var searchTerm = cookie.get('search-track')
-  if (searchTerm) console.log('search %s', searchTerm)
+  if (searchTerm) debug('search %s', searchTerm)
   if (searchTerm) return addTracksToResponse(searchTerm, r)
   fs.createReadStream(__dirname + '/index.html').pipe(r)
 }
@@ -106,6 +107,6 @@ function play (q, r, next) {
 
 function stream (q, r, next) {
   var track = JSON.parse(new Buffer(q.params[0], 'base64').toString())
-  console.log('playing %s', track.uri)
+  debug('playing %s', track.uri)
   require('./stream/' + track.source)(track.uri).pipe(r)
 }

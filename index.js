@@ -13,4 +13,3 @@ http.createServer(stack(
   route.post('/search', routes.search),
   route.get('/', routes.main)
 )).listen(config.port);
-

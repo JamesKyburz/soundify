@@ -5,7 +5,7 @@ var route = require('tiny-route')
 var debug = require('debug')('index.js')
 
 if (!module.parent) {
-  start(require('./config'))
+  start(require((process.env.CONFIG || '.') + '/config'))
 } else {
   module.exports = start
 }

@@ -31,7 +31,7 @@ function main(q, r, next) {
   var searchTerm = cookie.get('search-track');
   if (searchTerm) console.log('search %s', searchTerm);
   if (searchTerm) return addTracksToResponse(searchTerm, r);
-  fs.createReadStream('index.html').pipe(r);
+  fs.createReadStream(__dirname + '/index.html').pipe(r);
 }
 
 function addTracksToResponse(searchTerm, r) {
@@ -62,7 +62,7 @@ function addTracksToResponse(searchTerm, r) {
 
 function appCss(q, r, next) {
   r.writeHead(200, {'Content-Type': 'text/css'});
-  return fs.createReadStream('app.css').pipe(r);
+  return fs.createReadStream(__dirname + '/app.css').pipe(r);
 }
 
 function register(q, r, next) {
@@ -117,7 +117,7 @@ function play(q, r, next) {
     hyperquest(remotePlayer + '/' + q.params[0]);
   } else {
     if (player) player.kill();
-    player = childProcess.fork('./player');
+    player = childProcess.fork(__dirname + '/player');
     player.send(q.params[0]);
   }
   r.writeHead(302, {'Location': '/'});

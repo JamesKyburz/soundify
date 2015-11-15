@@ -7,6 +7,5 @@
   "spotify_user": "?",
   "spotify_password": "?",
   "service_credentials": "?",
-  "remote_player": "http://?",
-  "player": false
+  "remote_player": "http://?"
 }

@@ -49,25 +49,16 @@ function addTracksToResponse(searchTerm, r) {
   searchTrack(searchTerm, function(tracks) {
     var trackResponse = hyperglue(tracksHtml, {
       '.track': tracks.map(function(x) {
-        var playUrl = (config.player ? '/play/' : '/stream/') +
-          new Buffer(JSON.stringify(x)).toString('base64');
+        var playUrl = '/play/' + new Buffer(JSON.stringify(x)).toString('base64');
         var track = {
           '.track-title': x.title,
           '.track-duration': x.duration,
           '.track-source': x.source
         };
-        if (config.player) {
-          track['a'] = {href: playUrl};
-          track['.track-player'] = {
-            _html: '<p><span class="track-tap">Tap to play</span></p>'
-          };
-        } else {
-          track['.track-player'] = {
-            _html: '<audio controls preload="preload">' +
-                      '<source src="' + playUrl + '">' +
-                   '</audio>'
-          };
-        }
+        track['a'] = {href: playUrl};
+        track['.track-player'] = {
+          _html: '<p><span class="track-tap"></span></p>'
+        };
         return track;
       })
     }).innerHTML;
@@ -132,7 +123,7 @@ function authenticate(q, r, next) {
 
 function play(q, r, next) {
   var remotePlayer = config.remote_player;
-  if (config.player && remotePlayer) {
+  if (remotePlayer) {
     hyperquest(remotePlayer + '/' + q.params[0]);
   } else {
     if (player) player.kill();

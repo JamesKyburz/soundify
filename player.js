@@ -1,4 +1,4 @@
-var through = require('through')
+var through = require('through2')
 var speaker = require('speaker')()
 var decoder = require('lame').Decoder()
 var stream = require('./routes').stream

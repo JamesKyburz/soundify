@@ -1,6 +1,6 @@
 var config = require('../config')
 var search = require('./search-service')
-var through = require('through')
+var through = require('through2')
 var request = require('hyperquest')
 var JSONStream = require('JSONStream')
 
@@ -31,10 +31,11 @@ function decorate (cb) {
       var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=' + item.id.videoId +
         '&key=' + config.youtube_api_key
       return request(url).pipe(JSONStream.parse('items.*')).pipe(
-        through(function (data) {
+        through.obj(function (data, enc, cb2) {
           pending--
           tracks[i].duration = (data.contentDetails.duration || '').match(/\d+/g).join(':')
           if (!pending) cb(tracks)
+          cb2()
         }))
     }
   }

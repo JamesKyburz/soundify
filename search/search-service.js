@@ -1,5 +1,5 @@
 var hyperquest = require('hyperquest')
-var through = require('through')
+var through = require('through2')
 var JSONStream = require('JSONStream')
 var maxResults = require('../config').max_search_results
 
@@ -9,11 +9,14 @@ function search (options) {
   var tracks = []
   hyperquest(options.uri)
     .pipe(JSONStream.parse(options.parsingKeys))
-    .pipe(through(function toTrack (track) {
+    .pipe(through.obj(function toTrack (track, enc, cb) {
       if (tracks.length < maxResults) {
         track = options.parseTrack(track)
-        if (track) tracks.push(track)
+        if (track) {
+          tracks.push(track)
+        }
       }
+      cb()
     }, end)
   )
   function end () {

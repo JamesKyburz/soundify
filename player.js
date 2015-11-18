@@ -1,12 +1,13 @@
 var through = require('through2')
-var speaker = require('speaker')()
 var decoder = require('lame').Decoder()
+var request = require('hyperquest')
 var stream = require('./routes').stream
 
 process.on('message', function (uri) {
+  var speakerUrl = process.env.REMOTE_SPEAKER
   var track = through()
   stream({params: [uri]}, track)
   track
     .pipe(decoder)
-    .pipe(speaker)
+    .pipe(speakerUrl ? request.post(speakerUrl) : require('speaker')())
 })

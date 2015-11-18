@@ -10,14 +10,13 @@ So far youtube, soundcloud and spotify are supported.
 
 ```javascript
 var soundify = require('soundify')
-var config = require('./config')
-soundify(config)
+soundify(configPath) // default .env
 ```
 
 # config
 Here is where all your secret keys for the supported services are.
 
-see [config example](config)
+see [config example]
 
 # stream
 
@@ -41,7 +40,7 @@ npm install soundify
 
 MIT
 
-[config]: https://github.com/JamesKyburz/soundify/blob/master/config.example.json
+[config example]: https://github.com/JamesKyburz/soundify/blob/master/.env.example
 
 [stream]: https://github.com/JamesKyburz/soundify/tree/master/stream
 

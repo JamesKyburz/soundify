@@ -7,6 +7,7 @@ var searchTrack = require('./search/search')
 var childProcess = require('child_process')
 var hyperquest = require('hyperquest')
 var debug = require('debug')('routes.js')
+var querystring = require('querystring')
 var player = null
 
 module.exports = {
@@ -53,6 +54,9 @@ function addTracksToResponse (searchTerm, r) {
     }).innerHTML
     r.end(
       hyperglue(indexHtml, {
+        '.search-query': {
+          value: decodeURIComponent(searchTerm)
+        },
         '#content': {_html: trackResponse}
       }).innerHTML
     )
@@ -65,18 +69,18 @@ function appCss (q, r, next) {
 }
 
 function search (q, r, next) {
-  var track = ''
+  var formData = ''
   q
     .on('data', data)
     .on('end', end)
 
   function data (x) {
-    track += x.toString()
+    formData += x.toString()
   }
 
   function end () {
-    track = track.replace(/^track=/i, '')
-    r.writeHead(302, {'Location': '/', 'Set-Cookie': 'search-track=' + track + '; path=/; HttpOnly'})
+    var track = querystring.parse(formData).track
+    r.writeHead(302, {'Location': '/', 'Set-Cookie': 'search-track=' + encodeURIComponent(track) + '; path=/; HttpOnly'})
     r.end()
   }
 }

@@ -1,0 +1,6 @@
+node_modules
+tracks
+.DS_Store
+npm-debug.log
+*.mp3
+.env

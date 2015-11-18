@@ -9,7 +9,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "prepublish": "standard"
+    "prepublish": "standard",
+    "docker:build": "docker build -t soundify .",
+    "docker:run": "docker run -d --restart=always -v /opt/soundify:/config -p 1338:1338 -e \"CONFIG=/config/.env\" --name soundify soundify"
   },
   "author": {
     "name": "James Kyburz",

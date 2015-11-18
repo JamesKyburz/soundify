@@ -1,4 +1,3 @@
-var config = require('../config')
 var search = require('./search-service')
 var through = require('through2')
 var request = require('hyperquest')
@@ -8,7 +7,7 @@ module.exports = function (term, cb) {
   var options = {
     callback: decorate(cb),
     parsingKeys: ['items', true],
-    uri: 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=' + config.youtube_api_key + '&maxResults=' + search.maxResults + '&q=' + term,
+    uri: 'https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&key=' + process.env.YOUTUBE_API_KEY + '&maxResults=' + search.maxResults + '&q=' + term,
     parseTrack: function (item) {
       return {
         id: item.id,
@@ -29,7 +28,7 @@ function decorate (cb) {
     tracks.forEach(addDetail)
     function addDetail (item, i) {
       var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails&id=' + item.id.videoId +
-        '&key=' + config.youtube_api_key
+        '&key=' + process.env.YOUTUBE_API_KEY
       return request(url).pipe(JSONStream.parse('items.*')).pipe(
         through.obj(function (data, enc, cb2) {
           pending--

@@ -1,10 +1,9 @@
 var Spotify = require('spotify-web')
-var config = require('../config')
 var through = require('through2')
 
 module.exports = function (uri) {
   var stream = through()
-  Spotify.login(config.spotify_user, config.spotify_password, function (err, spotify) {
+  Spotify.login(process.env.SPOTIFY_USER, process.env.SPOTIFY_PASSWORD, function (err, spotify) {
     if (err) throw err
     spotify.get(uri, function (err, track) {
       if (err) throw err

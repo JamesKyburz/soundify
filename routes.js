@@ -4,7 +4,6 @@ var cookieCutter = require('cookie-cutter')
 var indexHtml = fs.readFileSync(__dirname + '/index.html')
 var tracksHtml = fs.readFileSync(__dirname + '/tracks.html')
 var searchTrack = require('./search/search')
-var config = require('./config')
 var childProcess = require('child_process')
 var hyperquest = require('hyperquest')
 var debug = require('debug')('routes.js')
@@ -83,17 +82,18 @@ function search (q, r, next) {
 }
 
 function authenticate (q, r, next) {
+  if (!process.env.SERVICE_CREDENTIALS) return next()
   var credentials = q.headers.authorization
   if (credentials) {
     credentials = new Buffer(credentials.slice(6), 'base64').toString()
-    if (credentials === config.service_credentials) return next()
+    if (credentials === process.env.SERVICE_CREDENTIALS) return next()
   }
   r.writeHead(401, {'WWW-Authenticate': 'Basic'})
   r.end('authentication required')
 }
 
 function play (q, r, next) {
-  var remotePlayer = config.remote_player
+  var remotePlayer = process.env.REMOTE_PLAYER
   if (remotePlayer) {
     hyperquest(remotePlayer + '/' + q.params[0])
   } else {

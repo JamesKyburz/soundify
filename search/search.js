@@ -1,7 +1,7 @@
 module.exports = function (term, cb) {
   var results = {}
   var result = []
-  var sources = require('../config').sources
+  var sources = (process.env.SOURCES || 'youtube soundcloud spotify').split(' ')
   var pending = sources.length
   sources.forEach(search)
   function search (source) {

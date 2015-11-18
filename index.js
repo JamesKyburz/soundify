@@ -1,3 +1,4 @@
+var dotenv = require('dotenv')
 var http = require('http')
 var stack = require('stack')
 var routes = require('./routes')
@@ -5,12 +6,14 @@ var route = require('tiny-route')
 var debug = require('debug')('index.js')
 
 if (!module.parent) {
-  start(require((process.env.CONFIG || '.') + '/config'))
+  start()
 } else {
   module.exports = start
 }
 
-function start (config) {
+function start (configPath) {
+  configPath = configPath || process.env.CONFIG || '.env'
+  dotenv.load({ path: configPath })
   http.createServer(stack(
     routes.authenticate,
     route.get(/^\/play\/(.*)/, routes.play),
@@ -19,9 +22,9 @@ function start (config) {
     route.get('/app.css', routes.appCss),
     route.post('/search', routes.search),
     route.get('/', routes.main)
-  )).listen(config.port, started)
+  )).listen(process.env.PORT, started)
 
   function started () {
-    debug('running on http://localhost:%s', config.port)
+    debug('running on http://localhost:%s', process.env.PORT)
   }
 }

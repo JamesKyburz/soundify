@@ -1,6 +1,5 @@
-var config = require('../config')
 var request = require('hyperdirect')()
 
 module.exports = function (uri) {
-  return request(uri + '?client_id=' + config.soundcloud_client_id)
+  return request(uri + '?client_id=' + process.env.SOUNDCLOUD_CLIENT_ID)
 }

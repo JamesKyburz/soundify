@@ -1,7 +1,7 @@
 var hyperquest = require('hyperquest')
 var through = require('through2')
 var JSONStream = require('JSONStream')
-var maxResults = require('../config').max_search_results
+var maxResults = process.env.MAX_SEARCH_RESULTS
 
 module.exports = search
 

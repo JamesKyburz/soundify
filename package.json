@@ -11,7 +11,7 @@
     "start": "node index",
     "prepublish": "standard",
     "docker:build": "docker build -t soundify .",
-    "docker:run": "docker run -d --restart=always -v /opt/soundify:/config -p 1338:1338 -e \"CONFIG=/config/.env\" --name soundify soundify"
+    "docker:run": "docker run -d --restart=always -v /opt/soundify:/config -p 1338:1338 -e \"CONFIG=/config/.env\" -e REMOTE_SPEAKER=$REMOTE_SPEAKER --name soundify soundify"
   },
   "author": {
     "name": "James Kyburz",

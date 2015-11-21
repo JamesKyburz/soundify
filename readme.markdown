@@ -30,6 +30,17 @@ Checkout [search] for the supported implementations
 
 Pull requests welcome!
 
+# docker
+
+If you don't want to compile ffmpeg et al. you can use docker.
+
+You need to setup your .env in the volume /opt/soundify
+```sh
+REMOTE_SPEAKER=http://yourip:9000 npm run docker:run
+```
+
+Then you need to run [remote-speaker]
+
 # install
 
 ```
@@ -45,3 +56,5 @@ MIT
 [stream]: https://github.com/JamesKyburz/soundify/tree/master/stream
 
 [search]: https://github.com/JamesKyburz/soundify/tree/master/search
+
+[remote-speaker]: https://github.com/jameskyburz/remote-speaker

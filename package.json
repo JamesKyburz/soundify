@@ -39,7 +39,7 @@
     "stack": "0.1.0",
     "through2": "2.0.0",
     "tiny-route": "2.1.1",
-    "youtube-audio-stream": "0.0.13"
+    "youtube-audio-stream": "0.0.14"
   },
   "devDependencies": {
     "standard": "5.3.1"

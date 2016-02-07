@@ -42,7 +42,7 @@
     "youtube-audio-stream": "0.0.18"
   },
   "devDependencies": {
-    "standard": "6.0.3"
+    "standard": "6.0.4"
   },
   "license": "MIT"
 }

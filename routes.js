@@ -1,13 +1,14 @@
 var fs = require('fs')
 var hyperglue = require('hyperglue')
 var cookieCutter = require('cookie-cutter')
-var indexHtml = fs.readFileSync(__dirname + '/index.html')
-var tracksHtml = fs.readFileSync(__dirname + '/tracks.html')
+var indexHtml = fs.readFileSync(path.join(__dirname, '/index.html'))
+var tracksHtml = fs.readFileSync(path.join(__dirname, '/tracks.html'))
 var searchTrack = require('./search/search')
 var childProcess = require('child_process')
 var hyperquest = require('hyperquest')
 var debug = require('debug')('routes.js')
 var querystring = require('querystring')
+var path = require('path')
 var player = null
 
 module.exports = {
@@ -31,7 +32,7 @@ function main (q, r, next) {
   var searchTerm = cookie.get('search-track')
   if (searchTerm) debug('search %s', searchTerm)
   if (searchTerm) return addTracksToResponse(searchTerm, r)
-  fs.createReadStream(__dirname + '/index.html').pipe(r)
+  fs.createReadStream(path.join(__dirname, '/index.html')).pipe(r)
 }
 
 function addTracksToResponse (searchTerm, r) {
@@ -65,7 +66,7 @@ function addTracksToResponse (searchTerm, r) {
 
 function appCss (q, r, next) {
   r.writeHead(200, {'Content-Type': 'text/css'})
-  return fs.createReadStream(__dirname + '/app.css').pipe(r)
+  return fs.createReadStream(path.join(__dirname, '/app.css')).pipe(r)
 }
 
 function search (q, r, next) {
@@ -102,7 +103,7 @@ function play (q, r, next) {
     hyperquest(remotePlayer + '/' + q.params[0])
   } else {
     if (player) player.kill()
-    player = childProcess.fork(__dirname + '/player')
+    player = childProcess.fork(path.join(__dirname, '/player'))
     player.send(q.params[0])
   }
   r.writeHead(302, {'Location': '/'})

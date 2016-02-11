@@ -1,6 +1,7 @@
 var fs = require('fs')
 var hyperglue = require('hyperglue')
 var cookieCutter = require('cookie-cutter')
+var path = require('path')
 var indexHtml = fs.readFileSync(path.join(__dirname, '/index.html'))
 var tracksHtml = fs.readFileSync(path.join(__dirname, '/tracks.html'))
 var searchTrack = require('./search/search')
@@ -8,7 +9,6 @@ var childProcess = require('child_process')
 var hyperquest = require('hyperquest')
 var debug = require('debug')('routes.js')
 var querystring = require('querystring')
-var path = require('path')
 var player = null
 
 module.exports = {

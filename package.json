@@ -32,7 +32,7 @@
     "dotenv": "2.0.0",
     "hyperdirect": "0.0.0",
     "hyperglue": "2.0.1",
-    "hyperquest": "2.1.1",
+    "hyperquest": "2.1.2",
     "lame": "1.2.4",
     "speaker": "0.3.0",
     "spotify-web": "git+http://git@github.com/fuzeman/node-spotify-web.git#feature/ping-pong-fix",

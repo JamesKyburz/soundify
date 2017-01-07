@@ -29,7 +29,7 @@
     "JSONStream": "1.2.1",
     "cookie-cutter": "0.2.0",
     "debug": "2.6.0",
-    "dotenv": "2.0.0",
+    "dotenv": "3.0.0",
     "hyperdirect": "0.0.0",
     "hyperglue": "2.0.1",
     "hyperquest": "2.1.2",

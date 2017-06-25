@@ -1,5 +1,7 @@
 # soundify
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/JamesKyburz/soundify.svg)](https://greenkeeper.io/)
+
 Search and play different music sources.
 
 So far youtube, soundcloud and spotify are supported.

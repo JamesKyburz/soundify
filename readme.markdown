@@ -1,12 +1,11 @@
 # soundify
 
+[![js-standard-style](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://github.com/feross/standard)
 [![Greenkeeper badge](https://badges.greenkeeper.io/JamesKyburz/soundify.svg)](https://greenkeeper.io/)
 
 Search and play different music sources.
 
 So far youtube, soundcloud and spotify are supported.
-
-[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 
 # usage
 
